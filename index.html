@@ -40,11 +40,11 @@
 <section>
 <h1 style="font-size:28px;">Engineering Design and Analysis Projects</h1>
 <article>
-<h3>Project 1: Thermal Isolation and Safety Design Study: Safe Mounting Solution (ANSYS FEA)</h3>
+<h3>Project 1: Thermal Isolation and Safety Design Study: Exhaust Mounting Solution (ANSYS FEA)</h3>
 
 <p><strong>Summary:</strong> To design and validate a safe, high-efficiency mounting solution for a 190&deg;C diesel heater exhaust pipe, focusing on minimizing heat conduction to the surrounding structure in a cold 0 &deg;C environment.</p>
 
-<p>I utilized SolidWorks to model the plate, which served as a substitute for a jalousie window panel. This model was then simulated under conditions of an exhaust pipe running through it, based on the three materials I had readily available, to determine the best material for this application.</p>
+<p>I utilized SolidWorks to model the plate, which served as a substitute for a jalousie window panel. This model was then simulated under conditions of an exhaust pipe running through it, based on the four materials I had readily available, to determine the best material for this application.</p>
 
 <p><strong>Methodology: CAD & Steady-State Thermal FEA</strong></p> <p>The entire analysis followed a rigorous digital engineering workflow to ensure accuracy and inform the final design recommendation.</p>
 
@@ -54,9 +54,62 @@
 <li>Defining Boundary Conditions: The simulation mimicked a worst-case scenario:</li>
 <ul>
 <li>Heat Source (Input): A 190&deg;C Fixed Temperature was applied to the inner face of the exhaust hole, simulating the hot pipe surface.</li>
-<li>Cooling Environment (Output): Convection was applied to all exterior surfaces (h=10 W/m²K) and an ambient temperature of 0 &deg;C to simulate heat loss to cold garage air.
+<li>Cooling Environment (Output): Convection was applied to all exterior surfaces (<strong>h = 10 $\frac{\text{W}}{\text{m} \cdot \text{K}}$</strong>) at 0 &deg;C, representing cold ambient conditions.
+  </li>
+</ul>
+<li>Material Comparison: Four simulations were run, one for each material (Carbon Steel, Stainless Steel, Aluminum, and Plywood), using their distinct Thermal Conductivity (<strong>k</strong>) values.</li>
+<li>Key Metric: The Total Heat Flux (<strong>Q<sub>out</sub></strong>) was measured to quantify the total power (in Watts) escaping the plate, determining the most effective thermal isolation.</li>
+</ol>
 
+<h4>Results and Conclusion</h4> <p>The analysis compared materials with widely varying thermal conductivity, leading to a clear conclusion regarding performance and non-combustible safety requirements.</p>
+<table>
+<thead>
+<tr>
+<th>Material Tested</th>
+<th>Thermal Conductivity (<strong>k</strong>)</th>
+<th>Total Heat Flow (<strong>Q<sub>out</sub></strong>)</th>
+<th>Performance Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Carbon Steel, 1020</td>
+<td><strong>54.1 $\frac{\text{W}}{\text{m} \cdot \text{K}}$</strong></td>
+<td>39.3 W </td>
+<td><strong>High Conduction.</strong> Baseline material; poor thermal isolation.</td>
+</tr>
+<tr>
+<td>Stainless Steel, 316</td>
+<td>14.6 $\frac{\text{W}}{\text{m} \cdot \text{K}}$</td>
+<td>20.6 W</td>
+<td><strong>Practical Thermal Barrier.</strong> Reduces heat flow by 47.6% compared to Carbon Steel.</td>
+</tr>
+<tr>
+<td>Aluminum alloy, 6061-T6</td>
+<td>155 $\frac{\text{W}}{\text{m} \cdot \text{K}}$</td>
+<td>53.5 W</td>
+<td> <strong>Highest Conduction.</strong> Highest heat loss, offering the least thermal isolation. $\mathbf{Q}_{\text{out}}$.</td>
+</tr>
+</tr>
+<td>Plywood</td>
+<td>0.13 $\frac{\text{W}}{\text{m} \cdot \text{K}}$</td>
+<td>0.856 W</td>
+<td><strong>Optimal Heat Isolation.</strong> Lowest heat loss, providing superior thermal isolation. $\mathbf{Q}_{\text{out}}$.</td>
+</tbody>
+</table>
 
+<p><strong>Final Engineering Recommendation:</strong></p><p>The analysis confirmed that Plywood delivered the superior thermal performance (<strong>Q<sub>out</sub></strong>) = 0.856 W for thermal isolation. While initially flagged due to the fire safety hazard posed by the 190&deg;C heat source, the final engineering decision is to select Plywood and mitigate the flammability risk by adding a non-combustible heat shield or ceramic collar between the exhaust pipe and the wood surface.</p>
+<p>This approach prioritizes the optimal thermal performance of the wood, resulting in a 97.8% reduction in heat flow compared to the Carbon Steel baseline, and demonstrates the ability to solve a safety constraint through design iteration rather than performance compromise.</p>
+
+<h4>Skills Demonstrated</h4>
+<ul>
+  <li>CAD Modeling: Creating precise geometry in SolidWorks.</li>
+  <li>Finite Element Analysis (FEA): Setting up and solving Steady-State Thermal analysis in ANSYS Discovery.</li>
+  <li>Thermal Analysis: Defining convection and temperature boundary conditions; interpreting heat flow (<strong>Q<sub>out</sub></strong>).</li>
+  <li>Safety & Material Science: Integrating fire safety constraints with performance data to select the optimal-but-protected material solution.</li>
+</ul>
+</article>
+<hr>
 
 </h2>
 </section>
@@ -122,7 +175,7 @@
     <li>Drivability improvements through component testing and replacement</li>
   </ul>
 
-  <h5>Future Work:</h5>
+  <h4>Future Work:</h4>
   <ul>
     <li>Restore key fob functionality (unlock/lock)</li>
     <li>Repair interior lighting and replace non-functioning components</li>
