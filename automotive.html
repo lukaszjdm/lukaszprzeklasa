@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0WKJXLWNJV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0WKJXLWNJV');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Automotive Projects – Lukasz Przeklasa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0e0e0e;
+      --surface: #161616;
+      --border: #2a2a2a;
+      --accent: #e8a020;
+      --accent2: #c47a10;
+      --text: #e8e4dc;
+      --muted: #7a7670;
+      --heading-font: 'Bebas Neue', sans-serif;
+      --body-font: 'DM Sans', sans-serif;
+      --mono-font: 'DM Mono', monospace;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body-font);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2.5rem;
+      height: 64px;
+      background: rgba(14,14,14,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--heading-font);
+      font-size: 1.4rem;
+      letter-spacing: 0.08em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--accent); }
+
+    .page-header {
+      padding: 10rem 2.5rem 5rem;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-header::before {
+      content: 'BMW';
+      position: absolute;
+      right: -2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--heading-font);
+      font-size: 22rem;
+      color: rgba(232,160,32,0.04);
+      pointer-events: none;
+      line-height: 1;
+    }
+
+    .page-tag {
+      font-family: var(--mono-font);
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .page-header h1 {
+      font-family: var(--heading-font);
+      font-size: clamp(3rem, 8vw, 7rem);
+      letter-spacing: 0.02em;
+      line-height: 0.95;
+      margin-bottom: 1.5rem;
+    }
+
+    .page-header p {
+      color: var(--muted);
+      max-width: 560px;
+      font-size: 0.97rem;
+    }
+
+    .projects-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 5rem 2.5rem;
+    }
+
+    .section-divider {
+      font-family: var(--mono-font);
+      font-size: 0.68rem;
+      letter-spacing: 0.25em;
+      color: var(--accent);
+      text-transform: uppercase;
+      padding: 1rem 0;
+      border-top: 1px solid var(--border);
+      margin: 3rem 0 2rem;
+    }
+
+    .project-block {
+      border: 1px solid var(--border);
+      margin-bottom: 3rem;
+      background: var(--surface);
+    }
+
+    .project-header {
+      padding: 2.5rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .project-header-left h2 {
+      font-family: var(--heading-font);
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      letter-spacing: 0.03em;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+
+    .project-header-left p {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .project-tools {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      font-family: var(--mono-font);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.7rem;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .tag-accent {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .project-body {
+      padding: 2.5rem;
+    }
+
+    .project-body h3 {
+      font-family: var(--mono-font);
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin: 2rem 0 0.8rem;
+    }
+
+    .project-body h3:first-child { margin-top: 0; }
+
+    .project-body p {
+      color: var(--muted);
+      font-size: 0.93rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-body ul {
+      list-style: none;
+      margin-bottom: 1rem;
+    }
+
+    .project-body ul li {
+      color: var(--muted);
+      font-size: 0.9rem;
+      padding: 0.3rem 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+    }
+
+    .project-body ul li::before {
+      content: '—';
+      color: var(--accent);
+      font-size: 0.7rem;
+      margin-top: 0.2rem;
+      flex-shrink: 0;
+    }
+
+    /* PHOTO GALLERY */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin: 1.5rem 0;
+    }
+
+    .photo-grid figure {
+      background: var(--bg);
+      overflow: hidden;
+    }
+
+    .photo-grid img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .photo-grid img:hover { transform: scale(1.04); }
+
+    .photo-grid figcaption {
+      padding: 0.6rem 0.9rem;
+      font-family: var(--mono-font);
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.07em;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ROI TABLE */
+    .results-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.85rem;
+    }
+
+    .results-table th {
+      font-family: var(--mono-font);
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-align: left;
+      padding: 0.8rem 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .results-table td {
+      padding: 0.7rem 1rem;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    .results-table tr:last-child td { border-bottom: none; }
+    .results-table td:first-child { color: var(--text); font-weight: 500; }
+    .highlight-row td { background: rgba(232,160,32,0.06); }
+
+    .skills-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--mono-font);
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 1.2rem; }
+      .page-header, .projects-container { padding-left: 1.2rem; padding-right: 1.2rem; }
+      .project-header { flex-direction: column; }
+      .nav-links { gap: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">L<span>.</span>Przeklasa</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="engineering.html">Engineering</a></li>
+    <li><a href="automotive.html" class="active">Automotive</a></li>
+    <li><a href="mailto:przeklasaluke@gmail.com">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <p class="page-tag">Portfolio / Automotive</p>
+  <h1>Automotive<br>Projects</h1>
+  <p>Hands-on vehicle restoration, diagnostics, fabrication, and system-level mechanical work across European platforms including BMW, Lexus, and Land Rover.</p>
+</div>
+
+<div class="projects-container">
+
+  <div class="section-divider">Automotive Projects</div>
+
+  <!-- BMW E36 -->
+  <div class="project-block">
+    <div class="project-header">
+      <div class="project-header-left">
+        <h2>1995 BMW 325i (E36) – Daily Driver & Long-Term Project</h2>
+        <p>Ongoing Ownership & Restoration · Winter 2018 – Present</p>
+      </div>
+      <div class="project-tools">
+        <span class="tag tag-accent">7+ Years Ownership</span>
+        <span class="tag">60,000+ Personal Miles</span>
+        <span class="tag">Full System Rebuilds</span>
+      </div>
+    </div>
+    <div class="project-body">
+      <h3>Overview</h3>
+      <p>My first car and most formative engineering teacher. Acquired with no mechanical experience, this E36 became the foundation of my hands-on skills over seven years of ownership and 60,000+ personal miles. Nearly every system on the car has been rebuilt, upgraded, or maintained independently — from cooling and drivetrain to suspension, brakes, and engine internals.</p>
+
+      <h3>Photos</h3>
+      <div class="photo-grid">
+        <figure>
+          <img src="images/e36 old.PNG" alt="E36 Initial State">
+          <figcaption>Initial acquisition state</figcaption>
+        </figure>
+        <figure>
+          <img src="images/e36 old front.PNG" alt="E36 Early Ownership">
+          <figcaption>Early ownership — initial maintenance phase</figcaption>
+        </figure>
+        <figure>
+          <img src="images/e36 new rear.jpg" alt="E36 Current Rear">
+          <figcaption>Current state — rear view after full repaint</figcaption>
+        </figure>
+        <figure>
+          <img src="images/e36 new front.jpg" alt="E36 Current Front">
+          <figcaption>Current state — front view with visual upgrades</figcaption>
+        </figure>
+      </div>
+
+      <h3>Major Work Performed</h3>
+      <ul>
+        <li>Complete cooling system overhaul</li>
+        <li>Driveline rebuild, clutch replacement, and hydraulic system service</li>
+        <li>Suspension, steering, and brake servicing</li>
+        <li>Extensive engine maintenance and diagnostics</li>
+        <li>Full vehicle repaint completed independently</li>
+        <li>50,000+ miles of long-term ownership maintenance</li>
+      </ul>
+
+      <h3>Upgrades & Modifications</h3>
+      <ul>
+        <li>Limited-slip differential (LSD) swap</li>
+        <li>Shifter rebuild and short shift kit installation</li>
+        <li>Performance pulleys and cold air intake</li>
+        <li>Tein coilover suspension</li>
+        <li>M3 OEM+ component upgrades</li>
+      </ul>
+
+      <h3>Skills Demonstrated</h3>
+      <div class="skills-chips">
+        <span class="tag">Complete Vehicle Systems</span>
+        <span class="tag">Mechanical Diagnostics</span>
+        <span class="tag">Drivetrain Rebuilds</span>
+        <span class="tag">Suspension & Brakes</span>
+        <span class="tag">Long-Term Maintenance Planning</span>
+        <span class="tag">Fabrication</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- BMW E38 -->
+  <div class="project-block">
+    <div class="project-header">
+      <div class="project-header-left">
+        <h2>2001 BMW 740iL (E38) – Engine & Transmission Swap</h2>
+        <p>Full Mechanical Restoration · Winter 2021 – Present</p>
+      </div>
+      <div class="project-tools">
+        <span class="tag tag-accent">Engine Swap</span>
+        <span class="tag">Transmission Rebuild</span>
+        <span class="tag">BMW INPA</span>
+        <span class="tag">Cam Timing Correction</span>
+      </div>
+    </div>
+    <div class="project-body">
+      <h3>Overview</h3>
+      <p>Purchased as a running vehicle with heavy exhaust smoke, this V8-powered luxury sedan became a full mechanical restoration. The project involved diagnosing complex multi-system failures — including a mistimed replacement engine and a failed transmission install — and resolving each through systematic root cause analysis and hands-on repair.</p>
+
+      <h3>Photos</h3>
+      <div class="photo-grid">
+        <figure>
+          <img src="images/dusty e38.png" alt="E38 Initial State">
+          <figcaption>Initial acquisition state — pre-restoration</figcaption>
+        </figure>
+        <figure>
+          <img src="images/removed engine.png" alt="Engine Removal">
+          <figcaption>Engine removal process</figcaption>
+        </figure>
+        <figure>
+          <img src="images/replacement engine.png" alt="Replacement M62">
+          <figcaption>Replacement M62 engine — sourced for $800</figcaption>
+        </figure>
+        <figure>
+          <img src="images/engine install.png" alt="Engine Installation">
+          <figcaption>Engine and transmission installation</figcaption>
+        </figure>
+        <figure>
+          <img src="images/e38 with engine installed.png" alt="Post-Install">
+          <figcaption>Post-installation milestone</figcaption>
+        </figure>
+        <figure>
+          <img src="images/transmission removal.png" alt="Transmission Removal">
+          <figcaption>Transmission removal for drivability correction</figcaption>
+        </figure>
+        <figure>
+          <img src="images/e38 front end.png" alt="E38 Front">
+          <figcaption>Current front-end state</figcaption>
+        </figure>
+        <figure>
+          <img src="images/e38 rear end.png" alt="E38 Rear">
+          <figcaption>Current rear-end state</figcaption>
+        </figure>
+      </div>
+
+      <h3>Major Work Performed</h3>
+      <ul>
+        <li>Initial diagnostics and cooling system repair (coolant pipe replacement)</li>
+        <li>PCV system service and oil system evaluation</li>
+        <li>Full engine removal and replacement with sourced M62 unit</li>
+        <li>Transmission replacement after improper torque converter installation</li>
+        <li>BMW INPA diagnostics to isolate misfires to one cylinder bank</li>
+        <li>Camshaft timing correction using timing kit and TDC alignment procedure</li>
+        <li>Restored proper firing across all cylinders after timing correction</li>
+        <li>Identified and replaced cracked transmission valve body using known-good unit to resolve rough shifting</li>
+        <li>Catalytic converter and muffler modification for improved exhaust flow</li>
+        <li>Front bumper sourcing and installation with passenger-side mount straightening</li>
+        <li>Driver-side fender panel sourcing and installation</li>
+        <li>H&R lowering spring installation</li>
+      </ul>
+
+      <h3>Skills Demonstrated</h3>
+      <div class="skills-chips">
+        <span class="tag">Advanced Engine Diagnostics</span>
+        <span class="tag">Cam Timing Correction</span>
+        <span class="tag">BMW INPA Factory Tools</span>
+        <span class="tag">Automatic Transmission Service</span>
+        <span class="tag">Torque Converter Alignment</span>
+        <span class="tag">Bodywork & Panel Alignment</span>
+        <span class="tag">Exhaust System Modification</span>
+        <span class="tag">Multi-System Failure Diagnosis</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEXUS GX470 -->
+  <div class="project-block">
+    <div class="project-header">
+      <div class="project-header-left">
+        <h2>2004 Lexus GX470 – Frame Repair & Structural Restoration</h2>
+        <p>Structural Fabrication & Rust Remediation · Summer 2024 – Summer 2025</p>
+      </div>
+      <div class="project-tools">
+        <span class="tag tag-accent">Structural Welding</span>
+        <span class="tag">Metal Fabrication</span>
+        <span class="tag">Rust Remediation</span>
+        <span class="tag">Chassis Repair</span>
+      </div>
+    </div>
+    <div class="project-body">
+      <h3>Overview</h3>
+      <p>Successfully restored the structural integrity of a Lexus GX470 by remediating extensive frame corrosion. This project involved high-precision metal fabrication, structural welding, and chemical treatment to halt oxidation and ensure long-term safety and durability of the load-bearing chassis structure.</p>
+
+      <div class="photo-grid">
+        <figure>
+          <img src="images/gx470 front.png" alt="GX470 Front">
+          <figcaption>GX470 front view</figcaption>
+        </figure>
+        <figure>
+          <img src="images/gx470 rear.png" alt="GX470 Rear">
+          <figcaption>GX470 rear view</figcaption>
+        </figure>
+      </div>
+
+      <h3>Work Performed</h3>
+      <ul>
+        <li>Rust removal using pneumatic needle scaler on accessible frame areas</li>
+        <li>Cut out severely corroded sections and fabricated custom metal replacement panels</li>
+        <li>Repaired and precisely realigned broken rear trailing arm mount</li>
+        <li>Applied phosphoric acid solution to convert remaining rust into a stable surface, followed by protective paint</li>
+        <li>Replaced corroded brake hard lines from under driver's seat to rear calipers</li>
+        <li>Replaced rear sway bar links including one fully rusted-off link</li>
+      </ul>
+
+      <h3>Skills Demonstrated</h3>
+      <div class="skills-chips">
+        <span class="tag">Structural Welding</span>
+        <span class="tag">Custom Metal Fabrication</span>
+        <span class="tag">Rust Remediation</span>
+        <span class="tag">Suspension Mount Alignment</span>
+        <span class="tag">Brake Line Replacement</span>
+        <span class="tag">Chemical Surface Treatment</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- RANGE ROVER -->
+  <div class="project-block">
+    <div class="project-header">
+      <div class="project-header-left">
+        <h2>2006 Range Rover Supercharged – Diagnostic Recovery & Restoration</h2>
+        <p>$500 Acquisition · Fall 2025 – Present</p>
+      </div>
+      <div class="project-tools">
+        <span class="tag tag-accent">$500 Acquisition</span>
+        <span class="tag">450–600% Projected ROI</span>
+        <span class="tag">Electrical Diagnostics</span>
+        <span class="tag">Paint Prep</span>
+      </div>
+    </div>
+    <div class="project-body">
+      <h3>Overview</h3>
+      <p>Acquired a non-starting luxury SUV for $500 through systematic identification of a repairable electronic fault. By bypassing a failed transmission inhibitor circuit, full drivetrain functionality was restored. The project now focuses on high-end aesthetic restoration and paint correction to maximize resale value.</p>
+
+      <div class="photo-grid">
+        <figure>
+          <img src="images/range rover front.png" alt="Range Rover Exterior">
+          <figcaption>Exterior condition at acquisition</figcaption>
+        </figure>
+        <figure>
+          <img src="images/range rover interior.png" alt="Range Rover Interior">
+          <figcaption>Interior condition</figcaption>
+        </figure>
+      </div>
+
+      <h3>Work Performed</h3>
+      <ul>
+        <li>Identified and bypassed a faulty transmission inhibitor circuit (Neutral Safety Switch) to restore starting capability</li>
+        <li>Conducted drivetrain validation on the 4.2L Supercharged V8 — verified shift quality and thermal management</li>
+        <li>Complete headlight remanufacture: housing separation, new high-clarity lenses, butyl seal for moisture protection</li>
+        <li>Sourced and installed replacement interior and exterior trim pieces</li>
+        <li>Multi-stage surface preparation including high-grit sanding and failed clear-coat leveling on hood and roof</li>
+      </ul>
+
+      <h3>Projected ROI Analysis</h3>
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th>Phase</th>
+            <th>Investment</th>
+            <th>Market Valuation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Acquisition</td>
+            <td>$500</td>
+            <td>Salvage / Non-Running</td>
+          </tr>
+          <tr>
+            <td>Restoration & Recovery</td>
+            <td>~$500 (parts + supplies) + in-house labor</td>
+            <td>$4,500 – $6,000</td>
+          </tr>
+          <tr class="highlight-row">
+            <td>Total Project Basis</td>
+            <td>~$1,000</td>
+            <td>450% – 600% Projected ROI</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Skills Demonstrated</h3>
+      <div class="skills-chips">
+        <span class="tag">Electrical Fault Diagnosis</span>
+        <span class="tag">Transmission Interlock Systems</span>
+        <span class="tag">Headlight Restoration</span>
+        <span class="tag">Paint Surface Preparation</span>
+        <span class="tag">Asset Valuation & Market Strategy</span>
+        <span class="tag">Project Management</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider">Motorcycle & Small Engine Projects</div>
+
+  <!-- MOTORIZED BICYCLE -->
+  <div class="project-block">
+    <div class="project-header">
+      <div class="project-header-left">
+        <h2>Custom Motorized Bicycle – Small Engine Integration</h2>
+        <p>Drivetrain Design & Fabrication · Summer 2020</p>
+      </div>
+      <div class="project-tools">
+        <span class="tag tag-accent">Custom Fabrication</span>
+        <span class="tag">Small Engine</span>
+        <span class="tag">Belt Drive Design</span>
+      </div>
+    </div>
+    <div class="project-body">
+      <h3>Overview</h3>
+      <p>Designed and built a custom motorized bicycle by integrating a Harbor Freight small engine onto a bicycle frame. The project centered on drivetrain integration, custom bracket fabrication, and creating an assisted propulsion system from scratch.</p>
+
+      <h3>Work Performed</h3>
+      <ul>
+        <li>Fabricated a custom metal engine mounting bracket and modified the frame to support engine and drivetrain loads</li>
+        <li>Installed and aligned a centrifugal clutch for automatic engagement</li>
+        <li>Designed and implemented a belt-driven rear pulley system, including a custom fabricated wooden rear-wheel pulley</li>
+        <li>Tested and refined drivetrain alignment and engagement for reliable operation</li>
+      </ul>
+
+      <h3>Skills Demonstrated</h3>
+      <div class="skills-chips">
+        <span class="tag">Small Engine Integration</span>
+        <span class="tag">Drivetrain Design</span>
+        <span class="tag">Custom Fabrication</span>
+        <span class="tag">Clutch & Torque Transfer</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAWA BABETTA -->
+  <div class="project-block">
+    <div class="project-header">
+      <div class="project-header-left">
+        <h2>1978 Jawa Babetta – Engine Swap & Moped Modification</h2>
+        <p>Full Powertrain Replacement · Summer 2024</p>
+      </div>
+      <div class="project-tools">
+        <span class="tag tag-accent">Engine Swap</span>
+        <span class="tag">Custom Fabrication</span>
+        <span class="tag">Electrical Wiring</span>
+        <span class="tag">Carburetor Tuning</span>
+      </div>
+    </div>
+    <div class="project-body">
+      <h3>Overview</h3>
+      <p>Completed a full engine swap on a 1978 Jawa Babetta moped, replacing the original powertrain with a modern 125cc four-speed engine. The project required structural modification, custom bracket fabrication, custom electrical wiring, and full system-level tuning to achieve reliable operation.</p>
+
+      <h3>Work Performed</h3>
+      <ul>
+        <li>Removed original engine and fitted a modern 125cc four-speed engine</li>
+        <li>Modified frame and fabricated custom engine mounting brackets</li>
+        <li>Wired custom electrical systems for ignition and controls from scratch</li>
+        <li>Rebuilt carburetor and refreshed fuel system components</li>
+        <li>Tuned throttle, ignition, and drivetrain for reliable operation</li>
+      </ul>
+
+      <h3>Skills Demonstrated</h3>
+      <div class="skills-chips">
+        <span class="tag">Engine Swapping</span>
+        <span class="tag">Custom Mount Fabrication</span>
+        <span class="tag">Electrical Wiring</span>
+        <span class="tag">Carburetor Rebuilding</span>
+        <span class="tag">System Tuning & Integration</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <a href="index.html">← Back to Home</a>
+  <span>przeklasaluke@gmail.com · (331) 245-4844</span>
+</footer>
+
+</body>
+</html>

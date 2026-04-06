@@ -1,520 +1,551 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0WKJXLWNJV"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0WKJXLWNJV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0WKJXLWNJV');
+  </script>
 
-  gtag('config', 'G-0WKJXLWNJV');
-</script>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Lukasz Przeklasa – Mechanical Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    body { font-family: Arial, sans-serif; margin: 2rem; }
-    h1 { color: #005fbe; }
-    section { margin-bottom: 2rem; }
+    :root {
+      --bg: #0e0e0e;
+      --surface: #161616;
+      --border: #2a2a2a;
+      --accent: #e8a020;
+      --accent2: #c47a10;
+      --text: #e8e4dc;
+      --muted: #7a7670;
+      --heading-font: 'Bebas Neue', sans-serif;
+      --body-font: 'DM Sans', sans-serif;
+      --mono-font: 'DM Mono', monospace;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body-font);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2.5rem;
+      height: 64px;
+      background: rgba(14,14,14,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--heading-font);
+      font-size: 1.4rem;
+      letter-spacing: 0.08em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--accent); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8rem 2.5rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(232,160,32,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-tag {
+      font-family: var(--mono-font);
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero h1 {
+      font-family: var(--heading-font);
+      font-size: clamp(4rem, 10vw, 9rem);
+      line-height: 0.92;
+      letter-spacing: 0.02em;
+      color: var(--text);
+      margin-bottom: 2rem;
+      max-width: 900px;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 480px;
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.8rem;
+      font-family: var(--mono-font);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #0e0e0e;
+      font-weight: 500;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent2);
+      border-color: var(--accent2);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border-color: var(--border);
+      color: var(--muted);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 6rem 2.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: var(--mono-font);
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: var(--heading-font);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      letter-spacing: 0.03em;
+      line-height: 1;
+      margin-bottom: 3rem;
+      color: var(--text);
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0;
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+      font-size: 0.97rem;
+    }
+
+    .about-text p:last-child { margin-bottom: 0; }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .stat-box {
+      background: var(--surface);
+      padding: 1.8rem 1.5rem;
+    }
+
+    .stat-value {
+      font-family: var(--heading-font);
+      font-size: 3rem;
+      color: var(--accent);
+      letter-spacing: 0.02em;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .stat-label {
+      font-family: var(--mono-font);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    /* SKILLS */
+    .skills-section { background: var(--surface); }
+    .skills-section > div {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 6rem 2.5rem;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .skill-card {
+      background: var(--surface);
+      padding: 2rem;
+      transition: background 0.2s;
+    }
+
+    .skill-card:hover { background: #1c1c1c; }
+
+    .skill-card h3 {
+      font-family: var(--mono-font);
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .skill-list {
+      list-style: none;
+    }
+
+    .skill-list li {
+      color: var(--muted);
+      font-size: 0.88rem;
+      padding: 0.35rem 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .skill-list li:last-child { border-bottom: none; }
+    .skill-list li::before {
+      content: '—';
+      color: var(--accent);
+      font-size: 0.7rem;
+    }
+
+    /* CTA CARDS */
+    .cta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .cta-card {
+      background: var(--surface);
+      padding: 2.5rem;
+      text-decoration: none;
+      display: block;
+      transition: background 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-card:hover { background: #1c1c1c; }
+
+    .cta-card::after {
+      content: '→';
+      position: absolute;
+      bottom: 2rem; right: 2rem;
+      font-size: 1.5rem;
+      color: var(--accent);
+      transition: transform 0.2s;
+    }
+
+    .cta-card:hover::after { transform: translateX(4px); }
+
+    .cta-card h3 {
+      font-family: var(--heading-font);
+      font-size: 2rem;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .cta-card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    /* CONTACT */
+    .contact-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--mono-font);
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+
+    /* ANIMATIONS */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      animation: fadeUp 0.7s ease forwards;
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-up:nth-child(2) { animation-delay: 0.1s; }
+    .fade-up:nth-child(3) { animation-delay: 0.2s; }
+    .fade-up:nth-child(4) { animation-delay: 0.3s; }
+
+    @media (max-width: 768px) {
+      .about-grid, .cta-grid { grid-template-columns: 1fr; }
+      nav { padding: 0 1.2rem; }
+      .nav-logo { font-size: 1.1rem; }
+      .nav-links { gap: 1.2rem; }
+      .hero, section { padding-left: 1.2rem; padding-right: 1.2rem; }
+    }
   </style>
 </head>
 <body>
-  <h1>Hi, I'm Lukasz Przeklasa</h1>
-  <p>Mechanical Engineering graduate with a passion for hands-on problem-solving and deep experience in automotive systems, fabrication, and diagnostics.</p>
-<section>
-  <h2>About Me</h2>
-  <p>My engineering journey began long before college, fueled by a lifelong obsession with cars and a drive to learn by doing. My mom still recalls how the first toy I ever picked up was a little car, and that early fascination only grew. From collecting Hot Wheels and playing racing games to naming every car on the street, I was drawn to everything automotive.</p>
 
-  <p>That passion became practical when I got my first car, a 1995 BMW 325i, which I’ve owned for over seven years and driven more than 60,000 miles. I’ve rebuilt and maintained nearly every system on that car, from the driveline, clutch, cooling system, and suspension, to brake and engine upgrades. I did it all myself, learning as I went. That hands-on experience didn’t just make me a capable technician — it inspired me to pursue a career in engineering, blending practical skill with design and analysis.</p>
-
-  <p>Since then, I’ve worked on a range of personal and family vehicles, including off-road and luxury platforms like the Lexus GX470 and BMW 740iL. These projects have honed my ability to troubleshoot complex systems, fabricate custom solutions, and manage full vehicle repairs with precision and confidence.</p>
-
-  <p>Today, I bring that same dedication, curiosity, and drive to every engineering challenge I take on. I'm always seeking opportunities where I can apply my hands-on background and technical knowledge to design better systems, solve real-world problems, and contribute to innovative mechanical solutions.</p>
-</section>
-
-<hr>
-
-<section>
-<article>
-  <h1 style="font-size: 30px;">Skills & Expertise</h1>
-  <ul>
-    <li>Mechanical Design & CAD (SolidWorks, AutoCAD)</li>
-    <li>Finite Element Analysis (FEA) & Computational Fluid Dynamics (CFD)</li>
-    <li>Automotive Systems Diagnostics & Repair</li>
-    <li>Fabrication & Welding (MIG, TIG)</li>
-    <li>Project Management & Problem-Solving</li>
-    <li>Hands-on Mechanical Assembly & Maintenance</li>
+<nav>
+  <a href="index.html" class="nav-logo">L<span>.</span>Przeklasa</a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="engineering.html">Engineering</a></li>
+    <li><a href="automotive.html">Automotive</a></li>
+    <li><a href="mailto:przeklasaluke@gmail.com">Contact</a></li>
   </ul>
-</article>
-</section>
+</nav>
 
-<hr>
+<div class="hero">
+  <p class="hero-tag fade-up">Mechanical Engineer · Chicago, IL</p>
+  <h1 class="fade-up">Lukasz<br><em>Przeklasa</em></h1>
+  <p class="hero-sub fade-up">BS Mechanical Engineering · UIC 2024. Hands-on background in automotive systems, CAD, FEA analysis, fabrication, and diagnostics.</p>
+  <div class="hero-actions fade-up">
+    <a href="engineering.html" class="btn btn-primary">Engineering Projects</a>
+    <a href="automotive.html" class="btn btn-ghost">Automotive Projects</a>
+    <a href="mailto:przeklasaluke@gmail.com" class="btn btn-ghost">Get In Touch</a>
+  </div>
+</div>
+
+<hr class="divider">
 
 <section>
-<h1 style="font-size: 30px;">Engineering Design and Analysis Projects</h1>
-
-<article>
-<h3 style="font-size: 25px;">Thermal Isolation and Safety Design Study: Exhaust Mounting Solution (ANSYS FEA)</h3>
-
-<p><strong>Summary:</strong> To design and validate a safe, high-efficiency mounting solution for a 190&deg;C diesel heater exhaust pipe, focusing on minimizing heat conduction to the surrounding structure in a cold 0 &deg;C environment.</p>
-
-<p>I utilized SolidWorks to model the plate, which served as a substitute for a jalousie window panel. This model was then simulated under conditions of an exhaust pipe running through it, based on the four materials I had readily available, to determine the best material for this application.</p>
-
-<p><strong>Methodology: CAD & Steady-State Thermal FEA</strong></p> <p>The entire analysis followed a rigorous digital engineering workflow to ensure accuracy and inform the final design recommendation.</p>
-
-<ol>
-<li>CAD Modeling (SolidWorks): The plate geometry was precisely modeled in SolidWorks, including the critical central hole for the exhaust pipe.</li>
-<li>Analysis Setup (ANSYS Discovery): The model was imported for a Steady-State Thermal FEA to evaluate heat conduction across materials.</li>
-<li>Defining Boundary Conditions: The simulation mimicked a worst-case scenario:</li>
-<ul>
-<li>Heat Source (Input): A 190&deg;C Fixed Temperature was applied to the inner face of the exhaust hole, simulating the hot pipe surface.</li>
-<li>Cooling Environment (Output): Convection was applied to all exterior surfaces <strong>h = 10&nbsp;W/(m&middot;K </strong>) at 0 &deg;C, representing cold ambient conditions.
-  </li>
-</ul>
-<li>Material Comparison: Four simulations were run, one for each material (Carbon Steel, Stainless Steel, Aluminum, and Plywood), using their distinct Thermal Conductivity (<strong>k</strong>) values.</li>
-<li>Key Metric: The Total Heat Flux (<strong>Q<sub>out</sub></strong>) was measured to quantify the total power (in Watts) escaping the plate, determining the most effective thermal isolation.</li>
-</ol>
-
-<figure>
-<img src="images/carbon steel window.png" alt="ANSYS Thermal Analysis Temperature Contour Plot" style="width: 100%; max-width: 1000px; display: block; margin-left: auto; margin-right: auto;">
-<figcaption style="text-align: center;"><strong>Temperature Contour Plot: Carbon Steel</strong></figcaption>
-<br><br>
-
-<img src="images/stainless steel window.png" alt="ANSYS Thermal Analysis Temperature Contour Plot" style="width: 100%; max-width: 1000px; display: block; margin-left: auto; margin-right: auto;">
-<figcaption style="text-align: center;"><strong>Temperature Contour Plot: Stainless Steel</strong></figcaption>
-<br><br>
-
-<img src="images/aluminum window.png" alt="ANSYS Thermal Analysis Temperature Contour Plot" style="width: 100%; max-width: 1000px; display: block; margin-left: auto; margin-right: auto;">
-<figcaption style="text-align: center;"><strong>Temperature Contour Plot: Aluminum Alloy</strong></figcaption>
-<br><br>
-
-<img src="images/plywood window.png" alt="ANSYS Thermal Analysis Temperature Contour Plot" style="width: 100%; max-width: 1000px; display: block; margin-left: auto; margin-right: auto;"> 
-<figcaption style="text-align: center;"><strong>Temperature Contour Plot: Plywood</strong></figcaption>
-</figure>
-
-<h4>Results and Conclusion</h4> <p>The analysis compared materials with widely varying thermal conductivity, leading to a clear conclusion regarding performance and non-combustible safety requirements.</p>
-<table border="1" cellpadding="5" cellspacing="0">
-<thead>
-<tr>
-<th>Material Tested</th>
-<th>Thermal Conductivity (<strong>k</strong>)</th>
-<th>Total Heat Flow (<strong>Q<sub>out</sub></strong>)</th>
-<th>Performance Summary</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Carbon Steel, 1020</strong></td>
-<td>54.1&nbsp;W/(m&middot;K)</td>
-<td>39.3 W </td>
-<td><strong>High Conduction.</strong> Baseline material; poor thermal isolation.</td>
-</tr>
-<tr>
-<td><strong>Stainless Steel, 316</strong></td>
-<td>14.6&nbsp;W/(m&middot;K)</td>
-<td>20.6 W</td>
-<td><strong>Practical Thermal Barrier.</strong> Reduces heat flow by 47.6% compared to Carbon Steel.</td>
-</tr>
-<tr>
-<td><strong>Aluminum alloy, 6061-T6</strong></td>
-<td>155&nbsp;W/(m&middot;K)</td>
-<td>53.5 W</td>
-<td> <strong>Highest Conduction.</strong> Highest heat loss, offering the least thermal isolation. <strong>Q<sub>out</sub></strong>.</td>
-</tr>
-</tr>
-<td><strong>Plywood</strong></td>
-<td>0.13&nbsp;W/(m&middot;K)</td>
-<td>0.856 W</td>
-<td><strong>Optimal Heat Isolation.</strong> Lowest heat loss, providing superior thermal isolation. <strong>Q<sub>out</sub></strong>.</td>
-</tbody>
-</table>
-
-<p><strong>Final Engineering Recommendation:</strong></p><p>The analysis confirmed that Plywood delivered the superior thermal performance (<strong>Q<sub>out</sub></strong>) = 0.856 W for thermal isolation. While initially flagged due to the fire safety hazard posed by the 190&deg;C heat source, the final engineering decision is to select Plywood and mitigate the flammability risk by adding a non-combustible heat shield or ceramic collar between the exhaust pipe and the wood surface.</p>
-<p>This approach prioritizes the optimal thermal performance of the wood, resulting in a 97.8% reduction in heat flow compared to the Carbon Steel baseline, and demonstrates the ability to solve a safety constraint through design iteration rather than performance compromise.</p>
-
-<h4>Skills Demonstrated:</h4>
-<ul>
-  <li>CAD Modeling: Creating precise geometry in SolidWorks.</li>
-  <li>Finite Element Analysis (FEA): Setting up and solving Steady-State Thermal analysis in ANSYS Discovery.</li>
-  <li>Thermal Analysis: Defining convection and temperature boundary conditions; interpreting heat flow (<strong>Q<sub>out</sub></strong>).</li>
-  <li>Safety & Material Science: Integrating fire safety constraints with performance data to select the optimal-but-protected material solution.</li>
-</ul>
-</article>
-
-<hr>
-
-<article>
-<h3 style="font-size: 25px;">Structural Integrity and Rigidity Study: E36 Performance Clutch Fork (SolidWorks Simulation FEA)</h3>
-
-<p><strong>Summary:</strong> To design and validate a high-strength replacement eyelet for the BMW E36 clutch pedal assembly. This project addresses the notorious failure point of the factory plastic eyelet, which is prone to cracking and complete detachment when paired with high-pressure aftermarket performance clutches.</p>
-
-<p>I utilized SolidWorks to model a custom-engineered metal eyelet as a robust, cost-effective alternative to expensive aftermarket conversion kits. By simulating the component under a "worst-case" 2500 N panic-load, I verified that this design provides a permanent fix to the "dead pedal" failure mode while improving shift precision through enhanced rigidity.</p>
-
-<p><strong>Design Intent & Value Engineering</strong></p> <p>The OEM eyelet is made of brittle plastic, which often fails under the increased hydraulic resistance of performance clutch systems. While boutique billet conversion kits exist, they can be prohibitively expensive. This study demonstrates a "Value Engineering" approach: designing a precision-machined metal eyelet that delivers professional-grade reliability and a 9.31 Factor of Safety at a fraction of the market cost.</p>
-
-<p><strong>Methodology: CAD & Static Structural FEA</strong></p> <p>The analysis followed a rigorous engineering workflow to ensure the part could handle the significant mechanical advantage generated by the clutch pedal lever arm.</p>
-
-<ol> <li><strong>CAD Modeling (SolidWorks):</strong> The eyelet was modeled to match the critical dimensions of the E36 pedal pin and the Tilton-style master cylinder rod, replacing plastic with high-strength structural metal.</li> <li><strong>Analysis Setup (SolidWorks Simulation):</strong> 
-  A Static Structural study was conducted to evaluate the eyelet’s response to high-leverage axial forces.</li> <li><strong>Defining Boundary Conditions:</strong> <ul> <li><strong>Load (Input):</strong> 
-    A <strong>2500 N</strong> (~560 lbs) axial force was applied. This accounts for the 4:1 leverage ratio of the pedal and the high-clamp pressure of a Stage 2 hydraulic system during rapid engagement.</li>
-     <li><strong>Fixtures (Constraints):</strong> The eyelet pin-hole was fixed to simulate the pivot point on the clutch pedal arm.</li> </ul> </li> <li><strong>Sectional Analysis:</strong> Used Section Clipping to verify internal stress distribution, ensuring the transition between the threaded shaft and the eyelet body was structurally sound.</li> 
-     <li><strong>Key Metrics:</strong> Von Mises Stress was checked against material yield, and Resultant Displacement was recorded to ensure a direct, non-compliant pedal feel.</li> </ol>
-
-<figure>
-  <img src="images/2500n clutch fork von mises.png" alt="Von Mises Stress Plot (Section View): 2500N Eyelet Load" style="width: 100%; max-width: 1000px; display: block; margin-left: auto; margin-right: auto;">
-  <figcaption style="text-align: center;"><strong>Von Mises Stress Plot (Section View): 2500N Eyelet Load</strong></figcaption>
-
-<figure>
-  <img src="images/2500n clutch fork deformation 2.png" alt="Resultant Displacement Plot (Section View): 2500N Eyelet Load" style="width: 100%; max-width: 1000px; display: block; margin-left: auto; margin-right: auto;">
-  <figcaption style="text-align: center;"><strong>Displacement Plot: Resultant Deformation (Scaled)</strong></figcaption>
-
-<figure>
-  <img src="images/2500n clutch fork mesh.png" alt="Von Mises Stress Plot (Section View): 2500N Eyelet Load" style="width: 100%; max-width: 1000px; display: block; margin-left: auto; margin-right: auto;">
-  <figcaption style="text-align: center;"><strong>Finite Element Mesh: High-Density Refinement</strong></figcaption> 
-</figure>
-
-<h4>Results and Conclusion</h4> <p>The simulation results prove that the custom eyelet delivers a massive improvement in safety and performance over the factory plastic component.</p>
-
-<table border="1" cellpadding="5" cellspacing="0"> <thead> <tr> <th>Metric Tested</th> <th>Calculated Value</th> <th>Performance Summary</th> </tr> </thead>
-   <tbody> <tr> <td><strong>Peak Von Mises Stress</strong></td> <td>70.0 MPa</td> <td><strong>Fatigue Resistant.</strong> Metal construction eliminates the cracking common in OEM plastic units.</td> </tr>
-     <tr> <td><strong>Max Displacement (Flex)</strong></td> <td>0.00169 mm</td> <td><strong>Direct Engagement.</strong> Removes the "spongy" feel caused by plastic deformation under load.</td> </tr> 
-     <tr> <td><strong>Minimum Factor of Safety</strong></td> <td>9.31</td> <td><strong>Failsafe Design.</strong> Engineered to withstand over 9x the force required to shatter the factory clip.</td> </tr>
-   </tbody>
- </table>
-
- <h4>Cost & Value Analysis</h4> <p>A primary driver for this study was <strong>Value Engineering</strong>. By identifying the specific failure point of the OEM system, a targeted solution was developed that offers high-performance results at a significant cost saving.</p>
-
-<table border="1" cellpadding="5" cellspacing="0"> <thead> <tr> <th>Solution Type</th> <th>Cost</th> <th>Performance Factor</th> </tr> </thead> <tbody> <tr> <td><strong>Premium Aftermarket Billet Kit</strong></td> <td>~$200</td> <td>High (Over-engineered for branding)</td> </tr> <tr> <td><strong>Custom Engineered Metal Eyelet (Heim Joint and Old Hardware) (</strong></td> <td><strong>~$10.00</strong></td> <td><strong>Identical (Validated 9.31 FOS)</strong></td> </tr> </tbody> </table>
-
-<p>This comparison highlights a <strong>90% reduction in cost</strong> while maintaining a safety margin that exceeds the requirements of a Stage 2 hydraulic clutch system.</p>
-
- <p><strong>Final Engineering Recommendation:</strong></p> 
- <p>Testing at a 2500 N load confirms that this reinforced eyelet is a permanent solution for E36 owners running performance clutches. By replacing the fatigue-prone plastic factory part with a specifically engineered metal alternative, the design achieved a 9.31 Factor of Safety and virtually zero flex (0.00169 mm). This modification ensures the driver will never be stranded by a shattered eyelet while providing the crisp, consistent bite-point required for high-performance driving.</p>
-
-  <h4>Skills Demonstrated:</h4> <ul> <li><strong>CAD Modeling:</strong> Precision design of drivetrain-critical mechanical interfaces in SolidWorks.</li> <li><strong>Failure Analysis:</strong> Identifying and resolving OEM mechanical failure points (plastic fatigue) through material upgrading and simulation.</li> 
-    <li><strong>Value Engineering:</strong> Creating low-cost, high-performance alternatives to expensive aftermarket hardware.</li> <li><strong>FEA Validation:</strong> Simulating high-tension axial loads and leverage ratios on critical mounting hardware.</li> </ul>
-</article>
-
-<hr>
-
-</section>
-  <h1 style="font-size:30px;">Automotive Projects</h1>
-  <article>
-    <h3 style="font-size: 25px;">1995 BMW 325i (E36) – Daily Driver and Ongoing Personal Project (Winter 2018–Present)</h3>
-    
-    <p><strong>Summary:</strong> My first car and my most important teacher — I bought this 1995 BMW 325i seven years ago with no mechanical experience. Today, after 50,000+ miles of ownership and over 275,000 miles on the chassis, I've rebuilt, upgraded, and maintained nearly every system myself. This project launched my passion for mechanical engineering and problem-solving.</p>   
-<figure>
-<img src="images/e36 old.PNG" alt="BMW E36 325i" style="width: 100%; max-width: 1000px; display: block; margin-left: auto; margin-right: auto;">
-<br><br>
-<figcaption style="text-align: center;"><strong>Intial Assessment:</strong> The E36 shortly upon acquisition. This photo captures the starting point before any mechanical or visual restoration began.</figcaption>
-<br><br>
-<img src="images/e36 old front.PNG" alt="BMW E36 325i" style="width: 100%; max-width: 1000px; display: block; margin-left: auto; margin-right: auto;">
-<br><br>
-<figcaption style="text-align: center;"><strong>Early Days of Ownership:</strong> The front profile after initial maintenance and temporary wheel changes, setting the stage for future mechanical and aesthetic upgrades.</figcaption>
-<br><br>
-<img src="images/e36 new rear.jpg" alt="BMW E36 325i" style="width: 100%; max-width: 1000px; display: block; margin-left: auto; margin-right: auto;">
-<br><br>
-<figcaption style="text-align: center;"><strong>Current State (Rear View):</strong> The car today, after a full repaint and aesthetic upgrades. Despite its age and history of wear and tear in the Midwest, it's maintained for reliability and looks excellent—a testament to detailed, hands-on mechanical and restorative work.</figcaption>
-<br><br>
-<img src="images/e36 new front.jpg" alt="BMW E36 325i" style="width: 100%; max-width: 1000px; display: block; margin-left: auto; margin-right: auto;">
-<br><br>
-<figcaption style="text-align: center;"><strong>Current State (Front View):</strong> Showcasing the completed visual modifications. This is the current aesthetic of the car, which remains my dependable daily driver. As I plan on keeping this vehicle long-term, having owned it for many years, and it being my first car, the look may continue to evolve in the future, built upon the foundation of complex system rebuilds and long-term maintenance planning that has resulted in a durable and functional asset.</figcaption>
-<br><br>
-
-    <h4>Major Work & Maintenance Performed:</h4>
-    <ul>
-      <li>Complete cooling system overhaul</li>
-      <li>Driveline rebuild, clutch replacement, hydraulic system</li>
-      <li>Suspension, steering, and brake servicing</li>
-      <li>Extensive engine maintenance and diagnostics</li>
-      <li>Full repaint completed independently</li>
-      <li>Long-term ownership maintenance across 50,000+ miles of personal driving</li>
-    </ul>
-
-    <h4>Upgrades & Modifications:</h4>
-    <ul>
-      <li>Limited-slip differential (LSD) swap</li>
-      <li>Shifter rebuild and short shift kit</li>
-      <li>Performance pulleys, cold air intake</li>
-      <li>Tein coilover suspension</li>
-      <li>M3 OEM+ component upgrades</li>
-    </ul>
-
-    <h4>Skills Demonstrated:</h4>
-    <ul>
-      <li>Hands-on experience with complete vehicle systems</li>
-      <li>Diagnostics, fabrication, mechanical problem-solving</li>
-      <li>System-level understanding of vehicle interactions</li>
-      <li>Long-term maintenance planning and execution</li>
-    </ul>
-	<article>
-<article>
-
-  <hr>
-
-  <h3 style="font-size: 25px;">2001 BMW 740iL (E38) – Engine & Transmission Swap Project (Winter 2021–Present)</h3>
-  <p><strong>Summary:</strong> Purchased in 2021 as a running vehicle with heavy smoke from the exhaust, this V8-powered luxury sedan became a full mechanical restoration project. I diagnosed and resolved several complex issues, including a mistimed replacement engine, and a failed transmission install. This project pushed my skills in diagnostics, drivetrain work, and engine timing to a new level.</p>
-
-</figure>
-  <img src="images/dusty e38.png" alt="BMW E38 740iL Awaiting a engine swap " style="width: 100%; max-width: 1000px; display: block; margin-left: auto; margin-right: auto;">
-  <br><br>
-  <figcaption style="text-align: center;"><strong>BMW 740iL (E38) Awaiting Engine Swap:</strong> The E38 project car. This photo captures the vehicle in its initial state before the extensive mechanical restoration began.</figcaption>
-  <br><br>
-  <img src="images/removed engine.png" alt="BMW E38 740iL Engine Removed" style="width: 100%; max-width: 1000px; display: block; margin-left: auto; margin-right: auto;">
-  <br><br>
-  <figcaption style="text-align: center;"><strong>Engine Removal Process:</strong> The E38 with the engine removed, showcasing the complexity of the drivetrain work involved in this restoration project.</figcaption>
-  <br><br>
-  <img src="images/replacement engine.png" alt="BMW M62 Engine Replacement Purchased from Facebook Marketplace for $800" style="width: 100%; max-width: 1000px; display: block; margin-left: auto; margin-right: auto;;">
-  <br><br>
-  <figcaption style="text-align: center;"><strong>Replacement M62 Engine:</strong> The used M62 engine sourced from Facebook Marketplace for $800.</figcaption>
-  <br><br>
-  <img src="images/engine install.png" alt="BMW E38 740iL Engine Installation" style="width: 100%; max-width: 1000px; display: block; margin-left: auto; margin-right: auto;">
-  <br><br>
-  <figcaption style="text-align: center;"><strong>Engine Installation:</strong> The process of installing the replacement M62 engine and transmission into the E38 chassis, highlighting the intricate work required for proper alignment and connection of all systems.</figcaption>
-  <br><br>
-  <img src="images/e38 with engine installed.png" alt="BMW E38 740iL After Engine Installation" style="width: 100%; max-width: 1000px; display: block; margin-left: auto; margin-right: auto;">
-  <br><br>
-  <figcaption style="text-align: center;"><strong>Post-Installation State:</strong> The E38 after the engine and transmission installation, marking a significant milestone in the restoration process.</figcaption>
-  <br><br>
-  <img src="images/transmission removal.png" alt="BMW E38 740iL Transmission Removal" style="width: 100%; max-width: 1000px; display: block; margin-left: auto; margin-right: auto;">
-  <br><br>
-  <figcaption style="text-align: center;" ><strong>Transmission Removal:</strong> The removal of the transmission to address drivability issues, showcasing the complexity of the drivetrain work involved in this restoration project.</figcaption>
-  <br><br>
-  <img src="images/e38 front end.png" alt="BMW E38 740iL Updated State" style="width: 100%; max-width: 1000px; display: block; margin-left: auto; margin-right: auto;">
-  <br><br>
-  <figcaption style="text-align: center;"><strong>Front End:</strong> Front-end view of the E38 in its current state following major mechanical and cosmetic restoration, including engine and transmission work and newly sourced exterior components.</figcaption>
-  <br><br>
-  <img src="images/e38 rear end.png" alt="BMW E38 740iL Exterior" style="width: 100%; max-width: 1000px; display: block; margin-left: auto; margin-right: auto;">
-  <br><br>
-  <figcaption style="text-align: center;"><strong>Rear End:</strong> Rear-end view of the E38 in its current state, showcasing exterior condition.</figcaption>
-  <br><br>
-  <img src="images/e38 interior.png" alt="BMW E38 740iL Interior" style="width: 100%; max-width: 1000px; display: block; margin-left: auto; margin-right: auto;">
-  <br><br>
-  <figcaption style="text-align: center;"><strong>Interior:</strong> Current interior condition of the E38, highlighting the restored cabin and overall vehicle presentation.</figcaption>
-  <br><br>
-  <br><br>
-
-  <h4>Major Work & Maintenance Performed:</h4>
-  <ul>
-    <li>Initial diagnostics and cooling system repair (coolant pipe replacement)</li>
-    <li>PCV system service and oil system evaluation</li>
-    <li>Engine removal and replacement with a used M62 engine</li>
-    <li>Transmission replacement after improper torque converter installation</li>
-    <li>BMW INPA diagnostics to isolate misfires to one bank</li>
-    <li>Camshaft timing correction using timing kit and TDC alignment</li>
-    <li>Restored engine performance with proper firing across all cylinders</li>
-    <li>Addressed drivability issues, including rough shifting, by replacing a cracked transmission valve body with a known good unit from old transmission, confirming the component was faulty.</li>
-    <li>Gutted the passenger-side catalytic converter, matching the already gutted driver’s side, to improve airflow across both cylinder banks. Removed the mufflers to further enhance exhaust flow and produce a more aggressive engine tone.</li>
-    <li>Sourced and mounted a front bumper, straightening the bent passenger-side mount (damaged in a previous crash) for proper alignment and fit.</li>
-    <li>Sourced and mounted a new front driver-side fender panel to complete the aesthetic restoration.</li>
-    <li>Sourced and installed H&R lowering springs to enchance ride height and handling characteristics.</li>
-  </ul>
-
-  <h4>Skills Demonstrated:</h4>
-  <ul>
-    <li>Advanced engine diagnostics and timing correction</li>
-    <li>Hands-on experience with BMW factory diagnostic tools (INPA)</li>
-    <li>Understanding of automatic transmission installation and torque converter alignment</li>
-    <li>Problem-solving under complex and multi-system failures</li>
-    <li>Engine and drivetrain removal and installation with precision</li>
-    <li>Exhaust system modification and airflow optimization</li>
-    <li>Bodywork alignment and mounting techniques</li>
-    <li>Engine cooling system diagnostics and repair</li>
-    <li>Drivability improvements through component testing and replacement</li>
-  </ul>
-
-  <h4>Future Work:</h4>
-  <ul>
-    <li>Restore key fob functionality (unlock/lock)</li>
-    <li>Repair interior lighting and replace non-functioning components</li>
-    <li>Install original fog lights</li>
-    <li>Source and install missing interior trim pieces and mounting tabs</li>
-    <li>Drill out and replace damaged rotor mounting bolt</li>
-    <li>Repair or upgrade the sound system</li>
-    <li>Replace a failing driver-side door latch assembly</li>
-    <li>Replace failing hood latch assembly</li>
-  </ul>
-	</article>
-
-<article>
-
-  <hr>
-
-    <h3 style="font-size: 25px;">2004 Lexus GX470 – Frame Repair & Restoration (Summer 2024–Summer 2025)</h3>
-    <p><strong>Summary:</strong> Successfully restored the structural integrity of a Lexus GX470 by remediating extensive frame corrosion and damage. This project involved high-precision metal fabrication, structural welding, and chemical treatment to halt oxidation and ensure the vehicle's long-term safety and durability.</p>
-
-    <img src="images/gx470 front.png" alt="Lexus GX470 Front View" style="width: 100%; max-width: 1000px; display: block; margin-left: auto; margin-right: auto;">
-    <br><br>
-    <figcaption style="text-align: center;"><strong>Front View:</strong> Front-end view of the Lexus GX470.</figcaption>
-    <br><br>
-    <img src="images/gx470 rear.png" alt="Lexus GX470 Rear View" style="width: 100%; max-width: 1000px; display: block; margin-left: auto; margin-right: auto;">
-    <br><br>
-    <figcaption style="text-align: center;"><strong>Rear View:</strong> Rear-end view of the Lexus GX470.</figcaption>
-    <br><br>
-
-    <h4>Major Work & Maintenance Performed:</h4>
-    <ul>
-      <li>Preformed rust removal using a pneumatic needle scaler on accessible frame areas</li>
-      <li>Cut out severely corroded sections and fabricated new metal replacements</li>
-      <li>Repaired and precisely realigned broken rear trailing arm mount</li>
-      <li>Applied phosphoric acid solution to convert remaining rust into a stable surface, followed by protective painting</li>
-      <li>Replaced corroded brake hard lines running from under the driver’s seat to rear calipers</li>
-      <li>Replaced rear sway bar links, including one rusted-off link</li>
-    </ul>
-
-    <h4>Future Work:</h4>
-    <ul>
-      <li>Replace timing belt and associated components</li>
-      <li>Conduct a full brake system inspection and replace any additional corroded lines or components</li>
-      <li>Perform a comprehensive suspension check and replace worn bushings or mounts as needed</li>
-      <li>Address front passenger-side vibration under speed</li>
-      <li>Complete a full vehicle detail and rust-proofing treatment</li>
-    </ul>
-
-    <h4>Skills Demonstrated:</h4>
-    <ul>
-      <li>Advanced rust removal and metal surface preparation techniques</li>
-      <li>Custom metal fabrication and structural welding</li>
-      <li>Precision alignment and restoration of suspension mounts</li>
-      <li>Brake system maintenance and component replacement</li>
-      <li>Project planning and working with weather-dependent schedules</li>
-    </ul>
-	</article>
-
-</section>
-  <section>
-
-<article>
-
-  <hr>
-
-  <h3 style="font-size: 25px;">2006 Land Rover Range Rover Supercharged – Diagnostic Recovery & Aesthetic Restoration (Fall 2025–Present)</h3>
-  
-  <p><strong>Summary:</strong> Acquired a non-starting luxury SUV for a nominal cost of $500. Through systematic troubleshooting of the transmission interlock systems, I successfully bypassed a "no-start" condition and restored full drivetrain functionality. The project currently focuses on high-end aesthetic restoration and paint correction to maximize market resale value.</p>
-
-  <img src="images/range rover front.png" alt="2006 Land Rover Range Rover Supercharged Exterior" style="width: 100%; max-width: 1000px; display: block; margin-left: auto; margin-right: auto;">
-  <br><br>
-  <figcaption style="text-align: center;"> <strong>Exterior:</strong> Exterior view of the 2006 Range Rover Supercharged, showcasing its overall condition and design.</figcaption>
-  <br><br>
-  <img src="images/range rover interior.png" alt="2006 Land Rover Range Rover Supercharged Interior" style="width: 100%; max-width: 1000px; display: block; margin-left: auto; margin-right: auto;">
-  <br><br>    
-  <figcaption style="text-align: center;"><strong>Interior:</strong> Interior view of the Range Rover Supercharged, highlighting the cabin layout, materials, and current condition.</figcaption>
-  <br><br>
-
-  <h4>Major Work & Maintenance Performed:</h4>
-  <ul>
-    <li>Identified and bypassed a faulty transmission inhibitor circuit (Neutral Safety Switch) to restore vehicle starting capabilities</li>
-    <li>Conducted extensive drivetrain validation on the 4.2L Supercharged V8 to verify shift quality and thermal management</li>
-    <li>Performed a complete headlight remanufacturing utilizing a heat gun for housing separation, new high-clarity lenses, and automotive-grade butyl tape for a moisture-proof seal</li>
-    <li>Sourced and installed replacement interior and exterior trim pieces to restore the vehicle's premium aesthetic</li>
-    <li>Began multi-stage surface preparation, including high-grit sanding and leveling of failed clear-coat on the hood and roof panels</li>
-  </ul>
-
-  <h4>Future Work:</h4>
-  <ul>
-    <li>Apply base-coat and 2K clear-coat to prepared panels once ambient temperatures reach the required chemical-bonding range (20°C+)</li>
-    <li>Perform a final interior detail and paint correction to prepare the vehicle for market listing</li>
-    <li>Conduct a comprehensive electronic sweep to ensure all luxury convenience features are fully operational</li>
-  </ul>
-
-  <h4>Projected Value Analysis:</h4>
-  <table border="1" cellpadding="5" cellspacing="0">
-    <thead>
-      <tr style="background-color: #f2f2f2;">
-        <th>Project Phase</th>
-        <th>Investment Breakdown</th>
-        <th>Market Valuation (Est.)</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>Acquisition</strong></td>
-        <td>$500.00 (Initial Purchase)</td>
-        <td>Salvage / Non-Running</td>
-      </tr>
-      <tr>
-        <td><strong>Restoration & Recovery</strong></td>
-        <td>~$500.00 (OEM Trim, Headlight Lenses, Paint/Sanding Supplies, & Title Fees) <br><strong>+ In-House Technical Labor</strong></td>
-        <td>$4,500 – $6,000 (Market Ready)</td>
-      </tr>
-      <tr style="background-color: #f9f9f9; font-weight: bold;">
-        <td><strong>Total Project Basis</strong></td>
-        <td><strong>~$1,000 Total Capital Investment</strong></td>
-        <td><strong>450% – 600% Projected ROI</strong></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h4>Skills Demonstrated:</h4>
-  <ul>
-    <li><strong>Diagnostic Logic:</strong> Troubleshooting complex European transmission/ignition interlock systems</li>
-    <li><strong>Aesthetic Restoration:</strong> High-grit paint preparation, component-level headlight rebuilding, and trim rejuvenation</li>
-    <li><strong>Market Strategy:</strong> Identifying undervalued assets based on repairable electronic faults to maximize ROI</li>
-    <li><strong>Project Management:</strong> Synchronizing high-labor preparation tasks with environmental and temperature constraints</li>
-  </ul>
-</article>
+  <p class="section-label">About Me</p>
+  <h2 class="section-title">Engineer by Degree.<br>Technician by Nature.</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>My engineering journey began long before college, fueled by a lifelong obsession with cars and a drive to learn by doing. From my first car — a 1995 BMW 325i I've owned for over seven years and driven 60,000+ miles — to full engine and transmission swaps, I've rebuilt nearly every major vehicle system by hand.</p>
+      <p>That hands-on foundation pushed me to pursue Mechanical Engineering at UIC, where I graduated in May 2024. I now bring both analytical rigor and practical skill to every challenge — from ANSYS finite element analysis to MIG welding and chassis fabrication.</p>
+      <p>I'm seeking a role where real-world problem-solving matters as much as simulation results.</p>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-box">
+        <div class="stat-value">6+</div>
+        <div class="stat-label">Years Automotive Work</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-value">$45K</div>
+        <div class="stat-label">eBay Revenue Generated</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-value">3.03</div>
+        <div class="stat-label">Engineering GPA</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-value">100%</div>
+        <div class="stat-label">Positive Feedback</div>
+      </div>
+    </div>
+  </div>
 </section>
 
-  <hr>
+<hr class="divider">
+
+<div class="skills-section">
+  <div>
+    <p class="section-label">Capabilities</p>
+    <h2 class="section-title">Skills & Tools</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3>Software</h3>
+        <ul class="skill-list">
+          <li>SolidWorks</li>
+          <li>ANSYS (FEA / CFD)</li>
+          <li>MATLAB</li>
+          <li>Microsoft Excel</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Engineering</h3>
+        <ul class="skill-list">
+          <li>Mechanical Design</li>
+          <li>Finite Element Analysis</li>
+          <li>Thermal Analysis</li>
+          <li>Tolerance & Fit Analysis</li>
+          <li>Root Cause Analysis</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Fabrication</h3>
+        <ul class="skill-list">
+          <li>MIG / TIG Welding</li>
+          <li>3D Printing & Prototyping</li>
+          <li>Precision Measurement</li>
+          <li>Electrical Wiring & Soldering</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Automotive</h3>
+        <ul class="skill-list">
+          <li>Engine & Transmission Swaps</li>
+          <li>OBD II Diagnostics</li>
+          <li>BMW INPA Factory Tools</li>
+          <li>Chassis & Suspension Work</li>
+          <li>Electrical Fault Diagnosis</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
 
 <section>
-  <h1 style="font-size: 30px;">Motorcycle Projects</h1>
-  
-  <article>
-    <h3 style="font-size: 25px;">Custom Motorized Bicycle – Small Engine Integration Project (Summer 2020)</h3>
-    <p><strong>Summary:</strong> Designed and built a custom motorized bicycle using an older bicycle frame and a Harbor Freight small engine. The project focused on drivetrain integration, mechanical fabrication, and assisted propulsion concepts.</p>
-
-    <h4>Major Work & Modifications:</h4>
-    <ul>
-      <li>Integrated a Harbor Freight small engine onto a bicycle frame</li>
-      <li>Fabricated a custom metal engine mounting bracket and modified the bicycle frame to support engine and drivetrain components</li>
-      <li>Installed and aligned a centrifugal clutch for automatic engagement</li>
-      <li>Designed and implemented a belt-driven rear pulley system, including fabrication of a custom wooden rear-wheel pulley to interface with the centrifugal clutch and engine output</li>
-      <li>Implemented engine-assisted propulsion by pedaling to speed and engaging the engine via throttle input</li>
-      <li>Tested and refined drivetrain alignment and engagement for reliable operation</li>
-    </ul>
-
-    <h4>Skills Demonstrated:</h4>
-    <ul>
-      <li>Small engine integration and drivetrain alignment</li>
-      <li>Mechanical problem-solving and fabrication</li>
-      <li>Understanding of torque transfer and clutch operation</li>
-      <li>System-level integration of mechanical and control components</li>
-    </ul>
-  </article>
-
-  <hr>
-
-  <article>
-    <h3 style="font-size: 25px;">1978 Jawa Babetta – Engine Swap & Motorcycle Modification Project (Summer 2024)</h3>
-    <p><strong>Summary:</strong> Completed a full engine swap on a 1979 Jawa Babetta moped, replacing the original powertrain with a modern 125cc four-speed engine. The project required structural modification, custom fabrication, wiring, and system-level troubleshooting.</p>
-
-    <h4>Major Work & Modifications:</h4>
-    <ul>
-      <li>Removed original engine and fitted a modern 125cc four-speed engine</li>
-      <li>Modified frame and fabricated custom engine mounting brackets</li>
-      <li>Wired custom electrical systems for ignition and controls</li>
-      <li>Rebuilt carburetor and refreshed fuel system components</li>
-      <li>Tuned throttle, ignition, and drivetrain for reliable operation</li>
-    </ul>
-
-    <h4>Skills Demonstrated:</h4>
-    <ul>
-      <li>Engine swapping and custom mounting fabrication</li>
-      <li>Electrical wiring and ignition system setup</li>
-      <li>Fuel system tuning and carburetor rebuilding</li>
-      <li>System-level integration and troubleshooting</li>
-    </ul>
-  </article>
+  <p class="section-label">Portfolio</p>
+  <h2 class="section-title">Explore My Work</h2>
+  <div class="cta-grid">
+    <a href="engineering.html" class="cta-card">
+      <h3>Engineering Projects</h3>
+      <p>ANSYS FEA studies, SolidWorks CAD, structural analysis, and capstone work.</p>
+    </a>
+    <a href="automotive.html" class="cta-card">
+      <h3>Automotive Projects</h3>
+      <p>BMW restorations, engine swaps, frame fabrication, and diagnostic recoveries.</p>
+    </a>
+  </div>
 </section>
-  
 
-<hr>
+<hr class="divider">
 
-    <h2>Contact</h2>
-    <p>Email: przeklasaluke@gmail.com</p>
-    <p><a href="https://github.com/lukaszjdm">GitHub</a></p>
-  </section>
+<section>
+  <div class="contact-row">
+    <div>
+      <p class="section-label">Contact</p>
+      <h2 class="section-title">Let's Connect</h2>
+    </div>
+    <div class="contact-links">
+      <a href="mailto:przeklasaluke@gmail.com" class="btn btn-primary">Email Me</a>
+      <a href="https://linkedin.com/in/lukasz-przeklasa" target="_blank" class="btn btn-ghost">LinkedIn</a>
+      <a href="https://github.com/lukaszjdm" target="_blank" class="btn btn-ghost">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2025 Lukasz Przeklasa</span>
+  <span>Chicago, IL · przeklasaluke@gmail.com · (331) 245-4844</span>
+</footer>
+
 </body>
 </html>

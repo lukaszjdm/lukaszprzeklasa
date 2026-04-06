@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0WKJXLWNJV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0WKJXLWNJV');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Engineering Projects – Lukasz Przeklasa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0e0e0e;
+      --surface: #161616;
+      --border: #2a2a2a;
+      --accent: #e8a020;
+      --accent2: #c47a10;
+      --text: #e8e4dc;
+      --muted: #7a7670;
+      --heading-font: 'Bebas Neue', sans-serif;
+      --body-font: 'DM Sans', sans-serif;
+      --mono-font: 'DM Mono', monospace;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body-font);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2.5rem;
+      height: 64px;
+      background: rgba(14,14,14,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--heading-font);
+      font-size: 1.4rem;
+      letter-spacing: 0.08em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--accent); }
+
+    .page-header {
+      padding: 10rem 2.5rem 5rem;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-header::before {
+      content: 'FEA';
+      position: absolute;
+      right: -1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--heading-font);
+      font-size: 20rem;
+      color: rgba(232,160,32,0.04);
+      pointer-events: none;
+      line-height: 1;
+    }
+
+    .page-tag {
+      font-family: var(--mono-font);
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .page-header h1 {
+      font-family: var(--heading-font);
+      font-size: clamp(3rem, 8vw, 7rem);
+      letter-spacing: 0.02em;
+      line-height: 0.95;
+      margin-bottom: 1.5rem;
+    }
+
+    .page-header p {
+      color: var(--muted);
+      max-width: 560px;
+      font-size: 0.97rem;
+    }
+
+    /* PROJECT CARDS */
+    .projects-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 5rem 2.5rem;
+    }
+
+    .project-block {
+      border: 1px solid var(--border);
+      margin-bottom: 3rem;
+      background: var(--surface);
+    }
+
+    .project-header {
+      padding: 2.5rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .project-header-left h2 {
+      font-family: var(--heading-font);
+      font-size: clamp(1.6rem, 3vw, 2.5rem);
+      letter-spacing: 0.03em;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+
+    .project-header-left p {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .project-tools {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      font-family: var(--mono-font);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.7rem;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .tag-accent {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .project-body {
+      padding: 2.5rem;
+    }
+
+    .project-body h3 {
+      font-family: var(--mono-font);
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin: 2rem 0 0.8rem;
+    }
+
+    .project-body h3:first-child { margin-top: 0; }
+
+    .project-body p {
+      color: var(--muted);
+      font-size: 0.93rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-body ul {
+      list-style: none;
+      margin-bottom: 1rem;
+    }
+
+    .project-body ul li {
+      color: var(--muted);
+      font-size: 0.9rem;
+      padding: 0.3rem 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+    }
+
+    .project-body ul li::before {
+      content: '—';
+      color: var(--accent);
+      font-size: 0.7rem;
+      margin-top: 0.2rem;
+      flex-shrink: 0;
+    }
+
+    /* IMAGE GRID */
+    .img-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin: 1.5rem 0;
+    }
+
+    .img-grid figure {
+      background: var(--bg);
+      overflow: hidden;
+    }
+
+    .img-grid img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .img-grid img:hover { transform: scale(1.04); }
+
+    .img-grid figcaption {
+      padding: 0.7rem 1rem;
+      font-family: var(--mono-font);
+      font-size: 0.68rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      border-top: 1px solid var(--border);
+    }
+
+    /* RESULTS TABLE */
+    .results-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.85rem;
+    }
+
+    .results-table th {
+      font-family: var(--mono-font);
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-align: left;
+      padding: 0.8rem 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .results-table td {
+      padding: 0.7rem 1rem;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    .results-table tr:last-child td { border-bottom: none; }
+
+    .results-table td:first-child {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .highlight-row td { background: rgba(232,160,32,0.06); }
+
+    /* SKILLS CHIPS */
+    .skills-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--mono-font);
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 1.2rem; }
+      .page-header, .projects-container { padding-left: 1.2rem; padding-right: 1.2rem; }
+      .project-header { flex-direction: column; }
+      .nav-links { gap: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">L<span>.</span>Przeklasa</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="engineering.html" class="active">Engineering</a></li>
+    <li><a href="automotive.html">Automotive</a></li>
+    <li><a href="mailto:przeklasaluke@gmail.com">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <p class="page-tag">Portfolio / Engineering</p>
+  <h1>Engineering<br>Projects</h1>
+  <p>Design analysis and simulation work using SolidWorks, ANSYS FEA, and engineering methodology developed through coursework and applied personal projects.</p>
+</div>
+
+<div class="projects-container">
+
+  <!-- PROJECT 1 -->
+  <div class="project-block">
+    <div class="project-header">
+      <div class="project-header-left">
+        <h2>Thermal Isolation & Safety Design Study</h2>
+        <p>Exhaust Mounting Solution — Steady-State Thermal FEA</p>
+      </div>
+      <div class="project-tools">
+        <span class="tag tag-accent">ANSYS Discovery</span>
+        <span class="tag">SolidWorks</span>
+        <span class="tag">Thermal FEA</span>
+        <span class="tag">Material Science</span>
+      </div>
+    </div>
+    <div class="project-body">
+      <h3>Objective</h3>
+      <p>Design and validate a safe, high-efficiency mounting solution for a 190°C diesel heater exhaust pipe passing through a structural panel in a 0°C ambient environment. The goal was to minimize heat conduction to the surrounding structure while maintaining non-combustible safety requirements.</p>
+
+      <h3>Methodology</h3>
+      <p>The analysis followed a rigorous digital engineering workflow using CAD modeling in SolidWorks followed by Steady-State Thermal FEA in ANSYS Discovery. Four materials with widely varying thermal conductivity were compared across identical boundary conditions.</p>
+      <ul>
+        <li>CAD plate geometry modeled in SolidWorks with a central exhaust hole</li>
+        <li>190°C Fixed Temperature applied to inner face of exhaust hole (heat source)</li>
+        <li>Convection (h = 10 W/m·K) applied to all exterior surfaces at 0°C ambient</li>
+        <li>Total Heat Flux (Qout) measured as the key performance metric across all four material simulations</li>
+      </ul>
+
+      <h3>Simulation Results</h3>
+      <div class="img-grid">
+        <figure>
+          <img src="images/carbon steel window.png" alt="Carbon Steel Thermal Analysis">
+          <figcaption>Carbon Steel — 39.3W Heat Flow</figcaption>
+        </figure>
+        <figure>
+          <img src="images/stainless steel window.png" alt="Stainless Steel Thermal Analysis">
+          <figcaption>Stainless Steel — 20.6W Heat Flow</figcaption>
+        </figure>
+        <figure>
+          <img src="images/aluminum window.png" alt="Aluminum Thermal Analysis">
+          <figcaption>Aluminum 6061 — 53.5W Heat Flow</figcaption>
+        </figure>
+        <figure>
+          <img src="images/plywood window.png" alt="Plywood Thermal Analysis">
+          <figcaption>Plywood — 0.856W Heat Flow</figcaption>
+        </figure>
+      </div>
+
+      <h3>Quantitative Results</h3>
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th>Material</th>
+            <th>Thermal Conductivity (k)</th>
+            <th>Total Heat Flow (Qout)</th>
+            <th>Performance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Carbon Steel 1020</td>
+            <td>54.1 W/(m·K)</td>
+            <td>39.3 W</td>
+            <td>Baseline — poor isolation</td>
+          </tr>
+          <tr>
+            <td>Stainless Steel 316</td>
+            <td>14.6 W/(m·K)</td>
+            <td>20.6 W</td>
+            <td>47.6% reduction vs. carbon steel</td>
+          </tr>
+          <tr>
+            <td>Aluminum 6061-T6</td>
+            <td>155 W/(m·K)</td>
+            <td>53.5 W</td>
+            <td>Highest conduction — worst isolation</td>
+          </tr>
+          <tr class="highlight-row">
+            <td>Plywood</td>
+            <td>0.13 W/(m·K)</td>
+            <td>0.856 W</td>
+            <td>97.8% reduction — optimal isolation</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Engineering Recommendation</h3>
+      <p>Plywood delivered optimal thermal performance (Qout = 0.856 W) — a 97.8% reduction versus carbon steel baseline. Rather than eliminating plywood due to the 190°C fire hazard, the final design decision adds a non-combustible ceramic collar between the exhaust pipe and wood surface. This approach solves the safety constraint through design iteration rather than performance compromise.</p>
+
+      <h3>Skills Demonstrated</h3>
+      <div class="skills-chips">
+        <span class="tag">CAD Modeling</span>
+        <span class="tag">Steady-State Thermal FEA</span>
+        <span class="tag">Boundary Condition Definition</span>
+        <span class="tag">Material Selection</span>
+        <span class="tag">Safety Analysis</span>
+        <span class="tag">Design Iteration</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECT 2 -->
+  <div class="project-block">
+    <div class="project-header">
+      <div class="project-header-left">
+        <h2>Structural Integrity Study: E36 Clutch Fork Eyelet</h2>
+        <p>Performance Clutch Upgrade — Static Structural FEA & Value Engineering</p>
+      </div>
+      <div class="project-tools">
+        <span class="tag tag-accent">SolidWorks Simulation</span>
+        <span class="tag">Static Structural FEA</span>
+        <span class="tag">Von Mises Stress</span>
+        <span class="tag">Value Engineering</span>
+      </div>
+    </div>
+    <div class="project-body">
+      <h3>Objective</h3>
+      <p>Design and validate a high-strength metal replacement eyelet for the BMW E36 clutch pedal assembly. The factory plastic eyelet is prone to brittle fracture under the increased hydraulic load of aftermarket performance clutches — a failure mode that leaves the driver with a dead pedal. This study validates a precision-machined metal alternative at a fraction of the boutique aftermarket cost.</p>
+
+      <h3>Methodology</h3>
+      <p>Static Structural FEA was conducted in SolidWorks Simulation under a 2500 N worst-case panic-load, accounting for the 4:1 mechanical advantage of the clutch pedal arm and the high clamp pressure of a Stage 2 hydraulic system.</p>
+      <ul>
+        <li>Custom eyelet modeled in SolidWorks to match E36 pedal pin and Tilton-style master cylinder rod dimensions</li>
+        <li>2500 N (~560 lbs) axial force applied at clutch pedal leverage ratio</li>
+        <li>Eyelet pin-hole fixed as pivot constraint</li>
+        <li>Section clipping used to verify internal stress at the threaded shaft–eyelet body transition</li>
+        <li>Von Mises Stress and Resultant Displacement recorded as key metrics</li>
+      </ul>
+
+      <h3>Simulation Plots</h3>
+      <div class="img-grid">
+        <figure>
+          <img src="images/2500n clutch fork von mises.png" alt="Von Mises Stress Plot">
+          <figcaption>Von Mises Stress — Section View (2500N Load)</figcaption>
+        </figure>
+        <figure>
+          <img src="images/2500n clutch fork deformation 2.png" alt="Displacement Plot">
+          <figcaption>Resultant Displacement — Scaled View</figcaption>
+        </figure>
+        <figure>
+          <img src="images/2500n clutch fork mesh.png" alt="FEA Mesh">
+          <figcaption>High-Density FEA Mesh Refinement</figcaption>
+        </figure>
+      </div>
+
+      <h3>Quantitative Results</h3>
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Calculated Value</th>
+            <th>Significance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Peak Von Mises Stress</td>
+            <td>70.0 MPa</td>
+            <td>Below yield — fatigue-resistant metal vs. brittle OEM plastic</td>
+          </tr>
+          <tr>
+            <td>Max Displacement</td>
+            <td>0.00169 mm</td>
+            <td>Virtually zero flex — eliminates spongy pedal feel</td>
+          </tr>
+          <tr class="highlight-row">
+            <td>Factor of Safety</td>
+            <td>9.31</td>
+            <td>Withstands 9× the force required to shatter the factory clip</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Value Engineering Analysis</h3>
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th>Solution</th>
+            <th>Cost</th>
+            <th>Performance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Premium Billet Aftermarket Kit</td>
+            <td>~$200</td>
+            <td>High (over-engineered for branding)</td>
+          </tr>
+          <tr class="highlight-row">
+            <td>Custom Engineered Metal Eyelet (Heim Joint + OEM Hardware)</td>
+            <td>~$10</td>
+            <td>Identical — validated 9.31 FOS</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>This represents a <strong style="color:var(--accent)">90% cost reduction</strong> while maintaining a safety margin that exceeds Stage 2 hydraulic clutch system requirements.</p>
+
+      <h3>Skills Demonstrated</h3>
+      <div class="skills-chips">
+        <span class="tag">CAD Modeling</span>
+        <span class="tag">Static Structural FEA</span>
+        <span class="tag">Failure Analysis</span>
+        <span class="tag">Value Engineering</span>
+        <span class="tag">Mesh Refinement</span>
+        <span class="tag">Factor of Safety Evaluation</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECT 3: CAPSTONE -->
+  <div class="project-block">
+    <div class="project-header">
+      <div class="project-header-left">
+        <h2>Senior Capstone: High-Speed Mini Hydroplane</h2>
+        <p>Cross-Functional Team Design Project · UIC Engineering EXPO</p>
+      </div>
+      <div class="project-tools">
+        <span class="tag tag-accent">SolidWorks</span>
+        <span class="tag">ANSYS</span>
+        <span class="tag">Team Project</span>
+        <span class="tag">Aug 2023 – Apr 2024</span>
+      </div>
+    </div>
+    <div class="project-body">
+      <h3>Overview</h3>
+      <p>Collaborated in a cross-functional team to design and develop a high-speed mini hydroplane for UIC's senior capstone program. The project spanned the full engineering design cycle — from concept and simulation through physical fabrication and public demonstration at the Engineering EXPO.</p>
+
+      <h3>Contributions</h3>
+      <ul>
+        <li>Developed a detailed 3D CAD model of the steering bracket in SolidWorks</li>
+        <li>Performed ANSYS stress simulations on the steering bracket to validate structural reliability under load</li>
+        <li>Executed precise assembly of the steering system, ensuring all components met design specifications</li>
+        <li>Applied composite resin to the hull to enhance structural rigidity and meet engineering standards</li>
+        <li>Led hands-on construction and functionality testing prior to the EXPO showcase</li>
+      </ul>
+
+      <h3>Skills Demonstrated</h3>
+      <div class="skills-chips">
+        <span class="tag">CAD Design</span>
+        <span class="tag">Structural FEA</span>
+        <span class="tag">Composite Material Application</span>
+        <span class="tag">Systems Assembly</span>
+        <span class="tag">Cross-Functional Teamwork</span>
+        <span class="tag">Prototype Testing</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECT 4: BOLT STRESS -->
+  <div class="project-block">
+    <div class="project-header">
+      <div class="project-header-left">
+        <h2>Bolt Stress Testing & FEA Analysis</h2>
+        <p>Multi-Material Bolt Selection Study · ANSYS FEA</p>
+      </div>
+      <div class="project-tools">
+        <span class="tag tag-accent">ANSYS</span>
+        <span class="tag">FEA</span>
+        <span class="tag">Mesh Convergence</span>
+        <span class="tag">Apr – May 2023</span>
+      </div>
+    </div>
+    <div class="project-body">
+      <h3>Overview</h3>
+      <p>Assessed bolt sizes and materials using ANSYS to determine optimal bolt selection for various loading applications. The study evaluated stress resistance and failure thresholds across multiple bolt configurations under compressive, shear, and combined loading conditions.</p>
+
+      <h3>Methodology</h3>
+      <ul>
+        <li>Performed finite element analysis to simulate compressive, shear, and combined loading on bolted plate assemblies</li>
+        <li>Identified critical structural failure modes and stress concentrations for each configuration</li>
+        <li>Conducted mesh refinement and convergence studies to validate model accuracy</li>
+        <li>Evaluated stress, deformation, and safety factors across varying load cases</li>
+      </ul>
+
+      <h3>Skills Demonstrated</h3>
+      <div class="skills-chips">
+        <span class="tag">ANSYS FEA</span>
+        <span class="tag">Multi-Load Simulation</span>
+        <span class="tag">Mesh Convergence</span>
+        <span class="tag">Failure Mode Analysis</span>
+        <span class="tag">Material Selection</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <a href="index.html">← Back to Home</a>
+  <span>przeklasaluke@gmail.com · (331) 245-4844</span>
+</footer>
+
+</body>
+</html>
