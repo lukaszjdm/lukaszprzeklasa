@@ -333,7 +333,18 @@
   </style>
   <link rel="stylesheet" href="portfolio-2026.css?v=1">
 <style>.project-block{scroll-margin-top:95px}html{scroll-padding-top:95px}.project-jump{display:flex;flex-wrap:wrap;gap:10px;margin:25px 0 0}.project-jump a{color:#d4e9ff;background:#15283d;border:1px solid #365675;padding:9px 14px;border-radius:8px;text-decoration:none;font-size:.85rem}.project-jump a:hover{border-color:#80c5ff;color:#80c5ff}</style>  <link rel="stylesheet" href="project-lightbox.css?v=1">
-</head>
+<style>
+/* Collapsible project shortcuts stay in the content flow, never over the header */
+.project-quicknav{position:relative!important;display:block!important;max-width:100%;margin:0 0 30px;padding:0;border:1px solid #35506c;border-radius:12px;background:#132235;overflow:hidden}
+.project-quicknav summary{display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;list-style:none;padding:14px 18px;color:#e5f1ff;font-weight:600;font-size:.9rem}
+.project-quicknav summary::-webkit-details-marker{display:none}
+.project-quicknav summary span{font-size:1.2rem;color:#8ec9ff}
+.project-quicknav[open] summary span{transform:rotate(180deg)}
+.project-quicknav .project-jump{display:flex!important;position:static!important;height:auto!important;flex-wrap:wrap;gap:9px;margin:0!important;padding:0 16px 16px!important;background:transparent!important;border:0!important;box-shadow:none!important;backdrop-filter:none!important}
+.project-quicknav .project-jump a{display:inline-block;color:#d5e9ff;text-decoration:none;background:#1a3047;border:1px solid #3d5b78;border-radius:8px;padding:9px 12px;font-size:.83rem}
+.project-quicknav .project-jump a:hover{border-color:#8bcaff;color:#fff}
+.project-quicknav summary:focus-visible,.project-quicknav a:focus-visible{outline:2px solid #9bd0ff;outline-offset:2px}
+</style></head>
 <body>
 
 <nav>
@@ -353,7 +364,7 @@
   <p>Hands-on vehicle restoration, diagnostics, fabrication, and system-level mechanical work across European platforms including BMW, Lexus, and Land Rover.</p>
 </div>
 
-<div class="projects-container"><nav class="project-jump" aria-label="Jump to project"><a href="#bmw-e36">BMW E36</a><a href="#bmw-e38">BMW E38</a><a href="#lexus-gx470">Lexus GX470</a><a href="#range-rover-l322">Range Rover</a><a href="#motorized-bicycle">Motorized bicycle</a><a href="#jawa-babetta">Jawa Babetta</a></nav>
+<div class="projects-container"><details class="project-quicknav"><summary>Jump to a project <span aria-hidden="true">⌄</span></summary><div class="project-jump"><a href="#bmw-e36">BMW 325i (E36)</a><a href="#bmw-e38">BMW 740iL (E38)</a><a href="#lexus-gx470">Lexus GX470 (UZJ120)</a><a href="#range-rover-l322">Range Rover (L322)</a><a href="#motorized-bicycle">Motorized bicycle</a><a href="#jawa-babetta">Jawa Babetta</a></div></details>
 
   <div class="section-divider">Automotive Projects</div>
 
@@ -361,7 +372,7 @@
   <div class="project-block" id="bmw-e36">
     <div class="project-header">
       <div class="project-header-left">
-        <h2>1995 BMW 325i (E36) – Daily Driver & Long-Term Project</h2>
+        <h2>1995 BMW 325i (E36)</h2>
         <p>Ongoing Ownership & Restoration · Winter 2018 – Present</p>
       </div>
       <div class="project-tools">
@@ -429,7 +440,7 @@
   <div class="project-block" id="bmw-e38">
     <div class="project-header">
       <div class="project-header-left">
-        <h2>2001 BMW 740iL (E38) – Engine & Transmission Swap</h2>
+        <h2>2001 BMW 740iL (E38)</h2>
         <p>Full Mechanical Restoration · Winter 2021 – Present</p>
       </div>
       <div class="project-tools">
@@ -513,7 +524,7 @@
   <div class="project-block" id="lexus-gx470">
     <div class="project-header">
       <div class="project-header-left">
-        <h2>2004 Lexus GX470 – Frame Repair & Structural Restoration</h2>
+        <h2>2004 Lexus GX470 (UZJ120)</h2>
         <p>Structural Fabrication, Brakes & Engine Maintenance · 2024 – Present</p>
       </div>
       <div class="project-tools">
@@ -576,7 +587,7 @@
   <div class="project-block" id="range-rover-l322">
     <div class="project-header">
       <div class="project-header-left">
-        <h2>2006 Range Rover Supercharged – Diagnostics, Repair & Resale</h2>
+        <h2>2006 Range Rover Supercharged (L322)</h2>
         <p>Completed Automotive Project · Fall 2025 – 2026</p>
       </div>
       <div class="project-tools">
